@@ -53,6 +53,11 @@ const FEISHU_RECIPIENTS: FeishuRecipient[] = [
     id: "person_c",
     name: "负责人C",
     openId: "TODO_REPLACE_WITH_PERSON_C_OPEN_ID"
+  },
+  {
+    id: "zzh",
+    name: "周子航",
+    openId: "ou_7d8a6e6df7621556ce0d21922b676706ccs"
   }
 ];
 const BULK_APPEAL_PLUGIN_URL = "https://bytedance.sg.larkoffice.com/docx/Ui3Ader4yov7a5xcl5blMk5Ngaf";
