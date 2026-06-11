@@ -407,6 +407,8 @@ ${ipProtectionForm.nominationReason || "-"}`;
   const currentRecipientName = currentRecipient?.name || "未识别接收人";
   const sendViaFeishuLabel = `发送给${currentRecipientName} / Send via Feishu`;
   const openRecipientFeishuLabel = `跳转${currentRecipientName}飞书 / Open in Feishu`;
+  const unknownOwnerRecipientHint = `请带着处罚截图找${currentRecipientName}确认 / Please send the punishment screenshot to ${currentRecipientName} for confirmation.`;
+  const unknownOwnerRecipientMessage = `无法判断是谁下的处罚，需要带处罚截图找${currentRecipientName}确认。`;
 
   function resetFlow(nextFlow: MainFlow) {
     setFlow(nextFlow);
@@ -667,8 +669,8 @@ ${ipProtectionForm.nominationReason || "-"}`;
                         {contentForm.source === "unknown" && (
                           <>
                             <ResultBox title="无法判断处罚来源 / Unknown enforcement owner">
-                              <p>请带着处罚截图找郑屹确认 / Please send the punishment screenshot to Zhengyi for confirmation.</p>
-                              <ActionLink onClick={() => openFeishu("无法判断是谁下的处罚，需要带处罚截图找郑屹确认。", "content")}>{openRecipientFeishuLabel}</ActionLink>
+                              <p>{unknownOwnerRecipientHint}</p>
+                              <ActionLink onClick={() => openFeishu(unknownOwnerRecipientMessage, "content")}>{openRecipientFeishuLabel}</ActionLink>
                             </ResultBox>
                             <ResultBox title="GMV MAX 自查 / GMV MAX self-check">
                               <p>如果是 GMV MAX 相关，建议可以先参考该文档自查 / If GMV MAX related, please refer to this guide first.</p>
@@ -940,8 +942,8 @@ ${ipProtectionForm.nominationReason || "-"}`;
                         {individualNoAppealReason === "unknown" && (
                           <>
                             <ResultBox title="无法判断处罚来源 / Unknown enforcement owner">
-                              <p>请带着处罚截图找郑屹确认 / Please send the punishment screenshot to Zhengyi for confirmation.</p>
-                              <ActionLink onClick={() => openFeishu("无法判断是谁下的处罚，需要带处罚截图找郑屹确认。", "content")}>{openRecipientFeishuLabel}</ActionLink>
+                              <p>{unknownOwnerRecipientHint}</p>
+                              <ActionLink onClick={() => openFeishu(unknownOwnerRecipientMessage, "content")}>{openRecipientFeishuLabel}</ActionLink>
                             </ResultBox>
                             <ResultBox title="GMV MAX 自查 / GMV MAX self-check">
                               <p>如果是 GMV MAX 相关，建议可以先参考该文档自查 / If GMV MAX related, please refer to this guide first.</p>
