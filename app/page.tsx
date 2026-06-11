@@ -29,7 +29,7 @@ type FeishuRecipient = {
   openId: string;
 };
 
-const ADS_REVIEW_CONSULTATION_FORM_URL = "https://bytedance.sg.larkoffice.com/share/base/form/shrlg81K3IQA15q1HGAFghAvIye";
+const L1_FORM_URL = "https://bytedance.sg.larkoffice.com/share/base/form/shrlg81K3IQA15q1HGAFghAvIye";
 const ADEX_TICKET_PLATFORM_URL = "https://www.adsintegrity.net/ticket-platform/tickets/create";
 const TICKET_PLATFORM_URL = ADEX_TICKET_PLATFORM_URL;
 const MERCURY_DOC_URL = "https://bytedance.us.larkoffice.com/docx/T95HdXVDzoO2UCxdHAHu8ns7srh";
@@ -40,24 +40,19 @@ const FEISHU_RECIPIENTS: FeishuRecipient[] = [
     openId: "ou_39a49f355b5879cec2a5fd047e23b6de"
   },
   {
-    id: "person_a",
-    name: "负责人A",
-    openId: "TODO_REPLACE_WITH_PERSON_A_OPEN_ID"
-  },
-  {
-    id: "person_b",
-    name: "负责人B",
-    openId: "TODO_REPLACE_WITH_PERSON_B_OPEN_ID"
-  },
-  {
-    id: "person_c",
-    name: "负责人C",
-    openId: "TODO_REPLACE_WITH_PERSON_C_OPEN_ID"
-  },
-  {
     id: "zzh",
     name: "周子航",
     openId: "ou_17b5012979b75c3ca49fc80a176f7670"
+  },
+  {
+    id: "lhm",
+    name: "李慧敏",
+    openId: "ou_f0d1256711fa3a2520019e8dcaea4c61"
+  },
+  {
+    id: "lyx",
+    name: "李悦欣",
+    openId: "ou_dfd05670469e967f060cbc9de925704e"
   }
 ];
 const BULK_APPEAL_PLUGIN_URL = "https://bytedance.sg.larkoffice.com/docx/Ui3Ader4yov7a5xcl5blMk5Ngaf";
@@ -412,8 +407,6 @@ ${ipProtectionForm.nominationReason || "-"}`;
   const currentRecipientName = currentRecipient?.name || "未识别接收人";
   const sendViaFeishuLabel = `发送给${currentRecipientName} / Send via Feishu`;
   const openRecipientFeishuLabel = `跳转${currentRecipientName}飞书 / Open in Feishu`;
-  const unknownOwnerRecipientHint = `请带着处罚截图找${currentRecipientName}确认 / Please send the punishment screenshot to ${currentRecipientName} for confirmation.`;
-  const unknownOwnerRecipientMessage = `无法判断是谁下的处罚，需要带处罚截图找${currentRecipientName}确认。`;
 
   function resetFlow(nextFlow: MainFlow) {
     setFlow(nextFlow);
@@ -674,8 +667,8 @@ ${ipProtectionForm.nominationReason || "-"}`;
                         {contentForm.source === "unknown" && (
                           <>
                             <ResultBox title="无法判断处罚来源 / Unknown enforcement owner">
-                              <p>{unknownOwnerRecipientHint}</p>
-                              <ActionLink onClick={() => openFeishu(unknownOwnerRecipientMessage, "content")}>{openRecipientFeishuLabel}</ActionLink>
+                              <p>请带着处罚截图找郑屹确认 / Please send the punishment screenshot to Zhengyi for confirmation.</p>
+                              <ActionLink onClick={() => openFeishu("无法判断是谁下的处罚，需要带处罚截图找郑屹确认。", "content")}>{openRecipientFeishuLabel}</ActionLink>
                             </ResultBox>
                             <ResultBox title="GMV MAX 自查 / GMV MAX self-check">
                               <p>如果是 GMV MAX 相关，建议可以先参考该文档自查 / If GMV MAX related, please refer to this guide first.</p>
@@ -947,8 +940,8 @@ ${ipProtectionForm.nominationReason || "-"}`;
                         {individualNoAppealReason === "unknown" && (
                           <>
                             <ResultBox title="无法判断处罚来源 / Unknown enforcement owner">
-                              <p>{unknownOwnerRecipientHint}</p>
-                              <ActionLink onClick={() => openFeishu(unknownOwnerRecipientMessage, "content")}>{openRecipientFeishuLabel}</ActionLink>
+                              <p>请带着处罚截图找郑屹确认 / Please send the punishment screenshot to Zhengyi for confirmation.</p>
+                              <ActionLink onClick={() => openFeishu("无法判断是谁下的处罚，需要带处罚截图找郑屹确认。", "content")}>{openRecipientFeishuLabel}</ActionLink>
                             </ResultBox>
                             <ResultBox title="GMV MAX 自查 / GMV MAX self-check">
                               <p>如果是 GMV MAX 相关，建议可以先参考该文档自查 / If GMV MAX related, please refer to this guide first.</p>
@@ -1357,7 +1350,7 @@ function ConsultationButtonGroup() {
 
   return (
     <div className="flex flex-wrap gap-3">
-      <a href={ADS_REVIEW_CONSULTATION_FORM_URL} target="_blank" rel="noreferrer" className={buttonClassName}>
+      <a href={L1_FORM_URL} target="_blank" rel="noreferrer" className={buttonClassName}>
         打开广审咨询表单 / Open Ads Review Consultation Form
       </a>
       <a href={ADEX_TICKET_PLATFORM_URL} target="_blank" rel="noreferrer" className={buttonClassName}>
